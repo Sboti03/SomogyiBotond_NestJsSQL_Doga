@@ -3,12 +3,50 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title><%= message %></title>
+    <title>Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     <script src='main.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <p><%= message %></p>
+    <nav class="container">
+        <a href="/cats/new">Uj macska</a>
+        <form class="searce-form" method="get">
+            <!--
+                <input class="seach-bar" type="search" name="color" id="">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            -->
+
+            <select name="color" id=""> 
+                <option value=""></option>
+                <% for( let i = 0; i < colors.length; i++ ) { %>
+                    <option value="<%= colors[i].szem_szin %>"><%= colors[i].szem_szin %></option>
+                <% } %>
+            </select>
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </nav>
+
+    <main class="container">
+        <% if (cats.length == 0) { %>
+            <iframe width="866" height="487" src="https://www.youtube.com/embed/K3p0EFtJIn8" title="CAT LOGIC - Cole and Marmalade" frameborder="0" allowfullscreen></iframe>
+           <% } else { %>
+            <table>
+                <tr>
+                    <th>Szem</th>
+                    <th>Súly</th>
+                </tr>
+                
+                <% for( let i = 0; i < cats.length; i++ ) { %>
+                    <tr>
+                        <td><%= cats[i].suly %></td>
+                        <td><%= cats[i].szem_szin %></td>
+                    </tr>
+                <% } %>
+            </table>
+           <% } %> 
+        
+    </main>
 </body>
 </html>
